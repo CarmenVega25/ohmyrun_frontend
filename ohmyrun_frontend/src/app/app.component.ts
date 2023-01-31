@@ -17,18 +17,28 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'MYKEY'
+      apiKey: 'API'
     })
 
     loader.load().then(() => {
       console.log('loaded gmaps')
-
-      const location = { lat: 47.685128247952946, lng: -122.33719484786576}
-
-      new google.maps.Map(document.getElementById("map") as HTMLElement, {
-        center: location,
-        zoom: 6,
-      })
+     
+      // const location = {
+      //   lat: 50.684855,
+      //   lng: 122.337323
+      // }
+      if(!navigator.geolocation) {
+        console.log("location is not supported")
+      } 
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(`lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`);
+        const location = {
+          lat: position.coords.latitude, lng: position.coords.longitude
+        }
+        new google.maps.Map(document.getElementById("map") as HTMLElement, {
+          center: location,
+          zoom: 15,
+        })
+        });
     })
-  }
-}
+}}
