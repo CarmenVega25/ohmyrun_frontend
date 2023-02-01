@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { HttpClient } from '@angular/common/http';
+import { FormComponentComponent } from './form-component/form-component.component';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'API KEY'
+      apiKey: 'KEY'
     })
 
     loader.load().then(() => {
@@ -52,25 +53,27 @@ export class AppComponent implements OnInit {
       });
     });
   }
+  selectedMarker: any;
+
+  setSelectedMarker(marker: any) {
+    this.selectedMarker = marker;
+}
+  guardar(marker: any) {
+    console.log('Marker submitted:', marker);
+
+  // Perform any desired actions with the submitted marker data
+}
+
 
   addMarker(location: google.maps.LatLng, map: google.maps.Map) {
     const marker = new google.maps.Marker({
       position: location,
       map: map,
     });
+    marker.addListener('click', () => {
+      this.setSelectedMarker(marker);
+    });
     console.log(marker);
-    //this.markers.push(marker);
-  //   if (marker) {
-  //     // const markerJson = {
-  //     //   latitude: marker.getPosition().lat(),
-  //     //   longitude: marker.getPosition().lng(),
-  //     const markerJson = {
-  //       latitude: marker && marker.getPosition() ? marker.getPosition().lat() : null,
-  //       longitude: marker && marker.getPosition() ? marker.getPosition().lng() : null
-     
-  //   }
-  //     this.markers.push(JSON.stringify(markerJson));
-  // }
     console.log(this.markers);
   }
 

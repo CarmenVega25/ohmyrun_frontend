@@ -2,3 +2,9 @@
 <div class="full" id="map">
 </div>
 
+<ng-container *ngIf="selectedMarker">
+  <app-form-component [marker]="selectedMarker"></app-form-component>
+</ng-container>
+
+
+<!-- (submit)="guardar($event)" -->
