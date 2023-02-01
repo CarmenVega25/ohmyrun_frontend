@@ -44,6 +44,7 @@ export class FormComponentComponent implements OnInit {
   guardar() {
     console.log('marca', this.marker);
     console.log('Formulario', this.formulario);
+
     //Aqui deberían consumir su servicio
    // this.submit.emit(this.marker);
   }
