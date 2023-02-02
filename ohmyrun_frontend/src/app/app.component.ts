@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'key',
+      apiKey: 'AIzaSyD_rpFGfqEPwCj-WYoFMRXse8QZdCheJEI',
     });
 
     loader.load().then(() => {
@@ -68,6 +68,7 @@ export class AppComponent implements OnInit {
         });
       });
     });
+    this.getMarkers();
   }
   selectedMarker: any;
 
@@ -119,6 +120,18 @@ export class AppComponent implements OnInit {
     });
   }
   getMarkers() {
-    this.http.get('http://127.0.0.1:5000/pin');
+    this.http.get('http://127.0.0.1:5000/pin').subscribe({
+      next: (data) => {
+        console.log('Successfully retrieved the markers from the database');
+        console.log(data);
+        this.markers = Array.prototype.slice.call(data);
+      },
+      error: (error) => {
+        console.error(
+          'An error occurred while retrieving the markers from the database: ',
+          error
+        );
+      },
+    });
   }
 }
