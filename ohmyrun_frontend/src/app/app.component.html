@@ -2,6 +2,19 @@
 <div class="full" id="map">
 </div>
 
+<form [formGroup]="form" *ngIf="habilitarMensaje">
+  <div class="form-group row">
+    <label for="mensaje" class="col-form-label col-sm-2">Mensaje</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" name="mensaje" formControlName="mensaje" required [(ngModel)]="formulario.mensaje">
+    </div>
+  </div>
+
+  <button class="btn btn-success" role="button" (click)='guardar()' >Guardar</button>
+
+</form>
+
+
 <ng-container *ngIf="selectedMarker">
   <app-form-component [marker]="selectedMarker"></app-form-component>
 </ng-container>
