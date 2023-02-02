@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormComponentComponent } from './form-component/form-component.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Formulario } from '../app/_model/Formulario';
+import { useState, useEffect } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +33,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'AIzaSyD_rpFGfqEPwCj-WYoFMRXse8QZdCheJEI',
+      apiKey: 'API KEY',
     });
 
     loader.load().then(() => {
@@ -123,8 +124,9 @@ export class AppComponent implements OnInit {
     this.http.get('http://127.0.0.1:5000/pin').subscribe({
       next: (data) => {
         console.log('Successfully retrieved the markers from the database');
-        console.log(data);
+        console.log('Data before slice call', data);
         this.markers = Array.prototype.slice.call(data);
+        console.log('Data after slice call', data);
       },
       error: (error) => {
         console.error(
