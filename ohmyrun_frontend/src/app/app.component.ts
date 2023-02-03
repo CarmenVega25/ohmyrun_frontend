@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormComponentComponent } from './form-component/form-component.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Formulario } from '../app/_model/Formulario';
-import { useState, useEffect } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'API KEY',
+      apiKey: 'APIKEY',
     });
 
     loader.load().then(() => {
@@ -108,7 +108,7 @@ export class AppComponent implements OnInit {
     };
 
     // Code to save the markers to a database or local storage.
-    this.http.post('http://127.0.0.1:5000/pin', markerJson).subscribe({
+    this.http.post('https://oh-my-run.herokuapp.com/pin', markerJson).subscribe({
       next: (data) => {
         console.log('Successfully saved the markers to the database');
       },
@@ -121,7 +121,7 @@ export class AppComponent implements OnInit {
     });
   }
   getMarkers() {
-    this.http.get('http://127.0.0.1:5000/pin').subscribe({
+    this.http.get('https://oh-my-run.herokuapp.com/pin').subscribe({
       next: (data) => {
         console.log('Successfully retrieved the markers from the database');
         console.log('Data before slice call', data);
