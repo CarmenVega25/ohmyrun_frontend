@@ -67,6 +67,13 @@ export class AppComponent implements OnInit {
             this.addMarker(event.latLng, map);
           } 
         });
+        this.markers.forEach((marker) => {
+          const location = {
+            lat: marker.latitude,
+            lng: marker.longitude,
+          };
+          this.addMarker(location, map);
+        });
       });
     });
     this.getMarkers();
@@ -127,6 +134,7 @@ export class AppComponent implements OnInit {
         console.log('Data before slice call', data);
         this.markers = Array.prototype.slice.call(data);
         console.log('Data after slice call', data);
+        this.renderMarkers(data);
       },
       error: (error) => {
         console.error(
@@ -136,4 +144,18 @@ export class AppComponent implements OnInit {
       },
     });
   }
+  renderMarkers(map) {
+    this.markers.forEach((marker) => {
+      const position = new google.maps.LatLng(marker.latitude, marker.longitude);
+      const newMarker = new google.maps.Marker({
+        position: position,
+        map: map
+      });
+      newMarker.addListener('click', () => {
+        this.setSelectedMarker(newMarker);
+      });
+    });
+  }
+  
+
 }
