@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@agm/core": "^3.0.0-beta.0",
+    "@angular/google-maps": "^15.1.2"
+  }
+}

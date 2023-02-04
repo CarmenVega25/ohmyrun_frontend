@@ -6,7 +6,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Formulario } from '../app/_model/Formulario';
 import { Marca } from '../app/_model/Marca';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,9 +21,6 @@ export class AppComponent implements OnInit {
   map: google.maps.Map;
   location: google.maps.LatLng;
   markers: Marca[] = [];
-  infoWindow: google.maps.InfoWindow;
-  mapMarkers: any = [];
-  markerCluster: any;
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder) {
     this.buildForm();
@@ -38,7 +34,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'API KEY',
+      apiKey: 'AIzaSyD_rpFGfqEPwCj-WYoFMRXse8QZdCheJEI',
     });
     
 
@@ -63,20 +59,6 @@ export class AppComponent implements OnInit {
             zoom: 15,
           }
         );
-        this.infoWindow = new google.maps.InfoWindow();
-        for (let i of this.markers){
-        const position = new google.maps.LatLng(i.latitude, i.longitude);
-
-        const tempMarker = new google.maps.Marker({position: position, map: this.map});
-          tempMarker.addListener('click',((tempMarker, map, infoWindow) => {
-        return () => {
-        infoWindow.setContent('<p><b>Longitude</b> : ' + i.longitude + '</p><p><b>Latitude</b> : ' + i.latitude +'</p>');
-        infoWindow.open(map, tempMarker);
-        }
-        })(tempMarker, this.map, this.infoWindow));
-        this.mapMarkers.push(tempMarker);
-        }
-        //this.markerCluster = new MarkerClusterer(this.map,this.mapMarkers,{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'})
 
         this.map.addListener('click', (event: google.maps.MapMouseEvent) => {
           console.log('this.map.addListener(click, (event: google.maps.MapMouseEvent) => {');
