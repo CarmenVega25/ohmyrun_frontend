@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'API KEY',
+      apiKey: 'APIKEY',
     });
     
 
@@ -87,11 +87,12 @@ export class AppComponent implements OnInit {
             this.habilitarMensaje = true;
             this.addMarker(event.latLng, this.map);
           }
-          this.getMarkers();
-          this.renderMarkers();
         });
       });
+    this.getMarkers();
+    this.renderMarkers();
     });
+
   }
   selectedMarker: any;
 
@@ -160,7 +161,7 @@ export class AppComponent implements OnInit {
 
       const newMarker = new google.maps.Marker({
         position: position,
-        map: this.map
+        map: this.map,
       });
 
       newMarker.addListener('click', () => {
