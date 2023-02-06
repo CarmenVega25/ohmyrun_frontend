@@ -70,7 +70,8 @@ export class AppComponent implements OnInit {
         const tempMarker = new google.maps.Marker({position: position, map: this.map});
           tempMarker.addListener('click',((tempMarker, map, infoWindow) => {
         return () => {
-        infoWindow.setContent('<p><b>Longitude</b> : ' + i.longitude + '</p><p><b>Latitude</b> : ' + i.latitude +'</p>');
+          // '<p><b>Longitude</b> : ' + i.longitude + '</p><p><b>Latitude</b> : ' + i.latitude +'</p>'
+        infoWindow.setContent('<p><b>Description</b> : ' + i.description +'</p>');
         infoWindow.open(map, tempMarker);
         }
         })(tempMarker, this.map, this.infoWindow));
