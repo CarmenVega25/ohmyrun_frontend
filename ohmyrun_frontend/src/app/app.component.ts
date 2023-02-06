@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { HttpClient } from '@angular/common/http';
-import { FormComponentComponent } from './form-component/form-component.component';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Formulario } from '../app/_model/Formulario';
 import { Marca } from '../app/_model/Marca';
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'API KEY',
+      apiKey: 'Apikey',
     });
     
 
@@ -77,6 +77,7 @@ export class AppComponent implements OnInit {
         })(tempMarker, this.map, this.infoWindow));
         this.mapMarkers.push(tempMarker);
         }
+
         //this.markerCluster = new MarkerClusterer(this.map,this.mapMarkers,{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'})
 
         this.map.addListener('click', (event: google.maps.MapMouseEvent) => {
@@ -84,8 +85,9 @@ export class AppComponent implements OnInit {
           if (event.latLng) {
             console.log(event.latLng.lat(), event.latLng.lng());
             this.latitude = event.latLng.lat(),
-            this.longitude = event.latLng.lng(),
-            this.habilitarMensaje = true;
+            this.longitude = event.latLng.lng();
+            if (!this.habilitarMensaje) { 
+              this.habilitarMensaje = true; };
             this.addMarker(event.latLng, this.map);
           }
         });
@@ -121,20 +123,27 @@ export class AppComponent implements OnInit {
     const markerJson = {
       latitude: this.latitude,
       longitude: this.longitude,
-      description: this.formulario.mensaje
+      description: this.formulario.mensaje,
     };
+    this.habilitarMensaje = false;
+
 
     // Code to save the markers to a database or local storage.
     this.http.post('https://oh-my-run.herokuapp.com/pin', markerJson).subscribe({
-      next: (data) => {
+      next: 
+      (data) => {
         console.log('Successfully saved the markers to the database');
-      },
+        this.getMarkers();
+        this.renderMarkers();
+      } ,
       error: (error) => {
         console.error(
           'An error occurred while saving the markers to the database: ',
           error
         );
-      },
+        this.getMarkers();
+        
+      }
     });
   }
   getMarkers() {
@@ -143,6 +152,7 @@ export class AppComponent implements OnInit {
       next: (data) => {
         this.markers = Array.prototype.slice.call(data);
         console.log('this.markers', this.markers);
+        this.renderMarkers();
       },
       error: (error) => {
         console.error(
@@ -158,6 +168,7 @@ export class AppComponent implements OnInit {
     console.log('renderMarkers');
     this.markers.forEach((marker) => {
       console.log('Recorriendo y poniendo pin id'+marker.id);
+    
       const position = new google.maps.LatLng(marker.latitude, marker.longitude);
 
       const newMarker = new google.maps.Marker({
