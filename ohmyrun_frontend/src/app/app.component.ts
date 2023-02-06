@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'API KEY',
+      apiKey: 'apikey',
     });
     
 
@@ -63,21 +63,7 @@ export class AppComponent implements OnInit {
             zoom: 15,
           }
         );
-        this.infoWindow = new google.maps.InfoWindow();
-        for (let i of this.markers){
-        const position = new google.maps.LatLng(i.latitude, i.longitude);
-
-        const tempMarker = new google.maps.Marker({position: position, map: this.map});
-          tempMarker.addListener('click',((tempMarker, map, infoWindow) => {
-        return () => {
-          // '<p><b>Longitude</b> : ' + i.longitude + '</p><p><b>Latitude</b> : ' + i.latitude +'</p>'
-        infoWindow.setContent('<p><b>Description</b> : ' + i.description +'</p>');
-        infoWindow.open(map, tempMarker);
-        }
-        })(tempMarker, this.map, this.infoWindow));
-        this.mapMarkers.push(tempMarker);
-        }
-
+        this.displayMessage();
         //this.markerCluster = new MarkerClusterer(this.map,this.mapMarkers,{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'})
 
         this.map.addListener('click', (event: google.maps.MapMouseEvent) => {
@@ -86,8 +72,9 @@ export class AppComponent implements OnInit {
             console.log(event.latLng.lat(), event.latLng.lng());
             this.latitude = event.latLng.lat(),
             this.longitude = event.latLng.lng();
-            if (!this.habilitarMensaje) { 
-              this.habilitarMensaje = true; };
+            // if (!this.habilitarMensaje) { 
+            //   this.habilitarMensaje = true; };
+            this.habilitarMensaje = true;
             this.addMarker(event.latLng, this.map);
 
           }
@@ -120,6 +107,24 @@ export class AppComponent implements OnInit {
       this.setSelectedMarker(marker);
     });
   }
+
+  displayMessage() {
+    this.infoWindow = new google.maps.InfoWindow();
+        for (let i of this.markers){
+        const position = new google.maps.LatLng(i.latitude, i.longitude);
+
+        const tempMarker = new google.maps.Marker({position: position, map: this.map});
+          tempMarker.addListener('click',((tempMarker, map, infoWindow) => {
+        return () => {
+          // '<p><b>Longitude</b> : ' + i.longitude + '</p><p><b>Latitude</b> : ' + i.latitude +'</p>'
+        infoWindow.setContent('<p><b>Description</b> : ' + i.description +'</p>');
+        infoWindow.open(map, tempMarker);
+        }
+        })(tempMarker, this.map, this.infoWindow));
+        this.mapMarkers.push(tempMarker);
+        }
+  }
+
 
   saveMarkers() {
     const markerJson = {
@@ -155,6 +160,7 @@ export class AppComponent implements OnInit {
         this.markers = Array.prototype.slice.call(data);
         console.log('this.markers', this.markers);
         this.renderMarkers();
+        this.displayMessage();
       },
       error: (error) => {
         console.error(
