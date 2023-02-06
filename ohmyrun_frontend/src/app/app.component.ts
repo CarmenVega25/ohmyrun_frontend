@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'API KEY',
+      apiKey: 'AIzaSyD_rpFGfqEPwCj-WYoFMRXse8QZdCheJEI',
     });
     
 
@@ -84,13 +84,12 @@ export class AppComponent implements OnInit {
           if (event.latLng) {
             console.log(event.latLng.lat(), event.latLng.lng());
             this.latitude = event.latLng.lat(),
-            this.longitude = event.latLng.lng()
+            this.longitude = event.latLng.lng(),
+            this.habilitarMensaje = true;
+            this.addMarker(event.latLng, this.map);
 
-            if (this.habilitarMensaje = true) {
-              this.addMarker(event.latLng, this.map);
-            }
-            
           }
+        
         });
       });
     this.getMarkers();
