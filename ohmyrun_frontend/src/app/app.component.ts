@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'Apikey',
+      apiKey: 'API KEY',
     });
     
 
@@ -89,7 +89,9 @@ export class AppComponent implements OnInit {
             if (!this.habilitarMensaje) { 
               this.habilitarMensaje = true; };
             this.addMarker(event.latLng, this.map);
+
           }
+        
         });
       });
     this.getMarkers();
