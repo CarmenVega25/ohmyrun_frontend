@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'api key',
+      apiKey: 'apikey',
     });
     
 
@@ -189,29 +189,4 @@ export class AppComponent implements OnInit {
       });
     });
   }
-
-  // loadAllMarkers(): void {
-  //   this.markers.forEach(marker => {
-  //     //Creating a new marker object
-  //     const position = new google.maps.LatLng(marker.latitude, marker.longitude);
-  //     const newMarker = new google.maps.Marker({
-  //       position: position,
-  //       map: this.map
-  //     });
-
-  //     //creating a new info window with markers info
-  //     const infoWindow = new google.maps.InfoWindow({
-  //       content: newMarker.getTitle()
-  //     });
-
-  //     //Add click event to open info window on marker
-  //     newMarker.addListener("click", () => {
-  //       infoWindow.open(newMarker.getMap(), newMarker);
-  //     });
-
-  //     //Adding marker to google map
-  //     newMarker.setMap(this.map);
-  //   });
-  // }
-
 }

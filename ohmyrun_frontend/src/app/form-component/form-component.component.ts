@@ -15,15 +15,15 @@ export class FormComponentComponent implements OnInit {
   form: FormGroup;
   @Input() marker: any;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.buildForm();
-   }
+  // constructor(private formBuilder: FormBuilder) {
+  //   this.buildForm();
+  //  }
 
-   private buildForm(){
-    this.form = this.formBuilder.group({
-      mensaje: ['', [Validators.required, Validators.maxLength(100)]],
-    });
-  }
+  //  private buildForm(){
+  //   this.form = this.formBuilder.group({
+  //     mensaje: ['', [Validators.required, Validators.maxLength(100)]],
+  //   });
+  // }
 
   ngOnInit(): void {
   }
