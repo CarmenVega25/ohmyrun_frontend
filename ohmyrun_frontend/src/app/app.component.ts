@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'apikey',
+      apiKey: 'api key',
     });
     
 
@@ -133,7 +133,7 @@ export class AppComponent implements OnInit {
       description: this.formulario.mensaje,
     };
     this.habilitarMensaje = false;
-
+    this.formulario.mensaje = "";
 
     // Code to save the markers to a database or local storage.
     this.http.post('https://oh-my-run.herokuapp.com/pin', markerJson).subscribe({
