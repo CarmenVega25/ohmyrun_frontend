@@ -1,26 +1,72 @@
-<h1>Welcome to Oh My Run</h1>
-<!-- <h1>It is a perfect day to go for a run!</h1> -->
-
-<p>Please save in the map a safe and fun location to go for a run. So we share these locations with the runner community!  </p>
-<div class="full" id="map">
-</div>
-
-<form id="formelements" [formGroup]="form" *ngIf="habilitarMensaje">
-  <div class="form-group row">
-    <label for="mensaje" class="col-form-label col-sm-2">Mensaje</label>
-    <div class="col-sm-6">
-      <input type="text" class="form-control" name="mensaje" formControlName="mensaje" required [(ngModel)]="formulario.mensaje">
+<head>
+  <!-- <script src="https://kit.fontawesome.com/af26e910aa.js" crossorigin="anonymous"></script> -->
+</head>
+<body class="parent">
+  <header>
+    <h1 class="header"><span id="first-header">OhMy</span><span id="second-header">Run</span></h1>
+    <!-- <h1>It is a perfect day to go for a run!</h1> -->
+  </header>
+  <main>
+    <p class="website-description">Please save in the map a safe and fun location to go for a run. You will share these locations with the runner community!  </p>
+    <section class ="flex">
+    <div class="full" id="map">
     </div>
-  </div>
+    <div class ="sidebar">
+      <span class="run-emoji">🏃🏽‍♀️</span><span class="text"><u> Events</u></span>
+        <ul>
+          <li>Event 1</li>
+          <li>Event 2</li>
+        </ul>
+      <span class="connect-emoji">📱</span><span class="text"><u> Connect with the community</u></span>
+        <ul>
+          <li>Connect</li>
+        </ul>
+      <span class="motivational-emoji">🔥</span><span class="text"> Motivational quote</span>
+          <p class="motivational-quote">“I don’t run to add days to my life, I run to add life to my days.” – Ronald Rook</p>
+      </div>
 
-  <button class="btn btn-success" role="button" (click)='guardar()' >Save</button>
-
-</form>
 
 
-<ng-container *ngIf="selectedMarker">
-  <app-form-component [marker]="selectedMarker"></app-form-component>
-</ng-container>
+    <!-- <div class="events">Events</div>
+    <div class="connect">Connect with the community</div>
+    <div class="motivational">Motivational quote</div> -->
+    </section>
+
+    <form id="formelements" [formGroup]="form" *ngIf="habilitarMensaje">
+      <div class="form-group row">
+        <label for="mensaje" class="form-description">Leave a description about the place</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="mensaje" formControlName="mensaje" required [(ngModel)]="formulario.mensaje">
+        </div>
+      </div>
+
+      <button class="save-button" role="button" (click)='guardar()' >Save</button>
+
+    </form>
 
 
-<!-- (submit)="guardar($event)" -->
+    <ng-container *ngIf="selectedMarker">
+      <app-form-component [marker]="selectedMarker"></app-form-component>
+    </ng-container>
+  </main>
+
+<!-- <footer id="footer">
+  <p><i class="fa-solid fa-copyright"></i>Tatiana Obando - Carmen Vega & Melissa Pena 2022</p>
+</footer> -->
+<footer id="footer">
+  <ul class="redes">
+  <!-- <li> <a href="mailto:ltatiobandore@gmail.com" class="email-me">Let's stay in touch!</a></li>
+  <li> <a href="https://twitter.com/tatiobandore"> <i class= "fab fa-twitter fa-5x"></i></a></li>
+  <li> <a href="https://www.linkedin.com/in/tatiana-obando-95b474133/"><i class="fab fa-linkedin fa-5x"></i></a></li> -->
+</ul>
+<div class="copyrights">
+  <p>&copy; 2023 Tatiana Obando, Carmen Vega, Melissa Pena</p>
+</div>
+</footer>
+
+
+
+
+
+</body>
+

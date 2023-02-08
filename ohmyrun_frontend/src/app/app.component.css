@@ -1,9 +1,9 @@
 .full {
-    width: 80vw;
-    height: 80vh;
-    display: grid;
+    width: 60vw;
+    height: 60vh;
 }
 
+/* 
 h1 {
     text-align: center;
 
@@ -12,4 +12,5 @@ h1 {
 p {
     margin: 20px;
     padding: 20px;
-}
+/* } */
+
