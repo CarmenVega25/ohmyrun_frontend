@@ -1,0 +1,65 @@
+<body class="parent">
+  <header>
+    <h1 class="header"><span id="first-header">OhMy</span><span id="second-header">Run</span></h1>
+  </header>
+  <main>
+    <p class="website-description">Welcome! Save a location and Run the Map </p>
+    <section class ="flex">
+      <div class="full" id="map">
+      </div>
+      <div class="form">
+        <form id="formelements" [formGroup]="form" *ngIf="habilitarMensaje">
+          <div class="form-group row">
+            <label for="mensaje" class="form-description">How to add a Run to the map:</label>
+              <ol>
+                <li>Click on the location of your run</li>
+                <li>Share your experience in the text box below</li>
+                <li>Click the 'Save' button</li>
+              </ol>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="mensaje" formControlName="mensaje" required [(ngModel)]="formulario.mensaje">
+            </div>
+          </div>
+          <button id="savebutton"class="save-button" role="button" (click)='guardar()' >Save</button>
+        </form>
+      </div>
+      <!-- <div class ="sidebar">
+        <span class="run-emoji">🏃🏽‍♀️</span><span class="text"><u> Racing Events coming up</u></span>
+          <ul>
+            <li>10kk </li>
+            <li>Half Marathon</li>
+          </ul>
+        <span class="connect-emoji">📱</span>
+          <span class="text"><u> Find a runner buddy</u></span>
+          <ul>
+            <li>Connect</li>
+          </ul>
+        <span class="motivational-emoji">🔥</span>
+        <span class="text"> Quote of the Day:</span>
+            <p class="motivational-quote">“I don’t run to add days to my life, I run to add life to my days.”–Ronald Rook</p>
+      </div> -->
+    </section>
+    <!-- <div class="form">
+    <form id="formelements" [formGroup]="form" *ngIf="habilitarMensaje">
+      <div class="form-group row">
+        <label for="mensaje" class="form-description">Leave a description about the place</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="mensaje" formControlName="mensaje" required [(ngModel)]="formulario.mensaje">
+        </div>
+      </div>
+      <button id="savebutton"class="save-button" role="button" (click)='guardar()' >Save</button>
+    </form>
+  </div> -->
+    <ng-container *ngIf="selectedMarker">
+      <app-form-component [marker]="selectedMarker"></app-form-component>
+    </ng-container>
+  </main>
+  <div><app-navbar></app-navbar></div>
+
+  <footer id="footer">
+  <div class="copyrights">
+    <p>&copy; 2023 Tatiana Obando, Carmen Vega, Melissa Peña</p>
+  </div>
+  </footer>
+</body>
+

@@ -39,7 +39,6 @@ export class AppComponent implements OnInit {
     let loader = new Loader({
       apiKey: 'AIzaSyD_rpFGfqEPwCj-WYoFMRXse8QZdCheJEI',
     });
-    
 
     loader.load().then(() => {
       
@@ -62,10 +61,12 @@ export class AppComponent implements OnInit {
         this.displayMessage();
         
         this.map.addListener('click', (event: google.maps.MapMouseEvent) => {
+          document.querySelector('#formelements')?.scrollIntoView()
           
           if (event.latLng) {
             this.latitude = event.latLng.lat(),
             this.longitude = event.latLng.lng();
+            // document.querySelector('#formelements')?.scrollIntoView()
             this.habilitarMensaje = true;
             this.addMarker(event.latLng, this.map);
           }
