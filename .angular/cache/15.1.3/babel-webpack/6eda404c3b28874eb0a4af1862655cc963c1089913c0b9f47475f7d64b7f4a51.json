@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Formulario {}","map":{"version":3,"mappings":"AAAA,OAAM,MAAOA,UAAU","names":["Formulario"],"sourceRoot":"","sources":["/Users/tatiobando/Developer/capstone/ohmyrun_frontend/src/app/_model/Formulario.ts"],"sourcesContent":["export class Formulario{\n    mensaje: string;\n}"]},"metadata":{},"sourceType":"module","externalDependencies":[]}
