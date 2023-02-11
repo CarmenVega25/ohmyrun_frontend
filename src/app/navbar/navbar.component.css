@@ -1,0 +1,24 @@
+.navbar {
+    display: flex;
+    background-image: linear-gradient(#AFF1DA, #F9EA8F);
+    justify-content: space-around;
+
+}
+.site-menu {
+    padding: 20px 30px;
+    margin-left: 100px;
+}
+
+a {
+    /* text-decoration: none; */
+    color: #174778;
+    margin: 0px 10px;
+    font-size: large;
+    font-weight: 200;
+    justify-content: space-around;
+    padding: 50px;
+    font-weight: bold;
+ }
+
+
+

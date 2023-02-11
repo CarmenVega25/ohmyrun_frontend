@@ -11,7 +11,7 @@ body {
 .website-description {
     padding: 20px;
     text-align: center;
-    color: rgb(128, 128, 128);
+    color:#174778;
     font-size: xx-large;
     font-weight: bolder;
 }
@@ -49,20 +49,25 @@ li {
     font-size:x-large;
 }
 #formelements {
+    background-image:linear-gradient(#000000,#7f8c8d);
     padding: 20px;
     width: 400px;
     border-radius: 5pt;
     margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
 }
 .form-description {
     font-family: Roboto;
     font-size:x-large;
+    color: white;
 }
 .form-control {
     background-color:white;
     width: 350px;
-    height: 30px;
+    height: 230px;
     border-radius: 5pt;
+    
 }
 .save-button {
     background-color: #d7df23;
@@ -70,7 +75,7 @@ li {
     width: 50pt;
     height: 25pt;
     margin-top: 5pt;
-    margin-left: 100pt;
+    justify-content: center;
 }
 .header {
     margin-bottom: 10px;
@@ -95,11 +100,10 @@ footer {
     padding-top:20px;
 }
 li {
-    color:  rgb(128, 128, 128);
-}
-.motivational-quote {
-    color:  rgb(128, 128, 128);
-    font-weight: bold;
+    color:  white;
+    margin: 5px;
+    padding: 5px;
+    font-weight: lighter;
 }
 
 ol {
