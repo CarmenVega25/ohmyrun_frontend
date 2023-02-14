@@ -348,3 +348,10 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Ignores dist folder. compiled output
+dist/
+
+
+# dependencies
+.angular/
